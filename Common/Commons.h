@@ -18,6 +18,9 @@
 #define SUCCESS     true
 #define FAILURE     false
 
+// IP Address Length
+#define IP_ADDR_LEN         50
+
 // Listener Port for Data Provider Service
 #define DATAPROVIDER_PORT   "7777"
 

@@ -2,7 +2,18 @@
 
 /* Worker Service constructor
  */
-WorkerService::WorkerService() {
+WorkerService::WorkerService(const char* l_pDataProviderAddr,     /* Data Provider's IP Address */
+                             const char* l_pAggregatorAddr        /* Aggregator's IP Adddress */ ) {
+    // Reset the addresses
+    memset(m_DataProviderAddr, 0, IP_ADDR_LEN);
+    memset(m_AggregatorAddr, 0, IP_ADDR_LEN);
+
+    // Copy the address params
+    strncpy_s(m_DataProviderAddr, IP_ADDR_LEN, 
+              l_pDataProviderAddr, strnlen_s(l_pDataProviderAddr, INET6_ADDRSTRLEN));
+    strncpy_s(m_AggregatorAddr, IP_ADDR_LEN,
+              l_pAggregatorAddr, strnlen_s(l_pAggregatorAddr, INET6_ADDRSTRLEN));
+
     // Initialize Winsock
     WSADATA wsaData;
     int iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
@@ -28,7 +39,7 @@ WorkerService::~WorkerService() {
  */
 void WorkerService::Process() {
     // Connect to Data Provider
-    if (!m_DataProviderClient.Connect("localhost", DATAPROVIDER_PORT)) {
+    if (!m_DataProviderClient.Connect(m_DataProviderAddr, DATAPROVIDER_PORT)) {
         // Connection attempt to server failed. Exit proceess
         throw std::runtime_error("Connect to Data Provider Service failed.");
     }
@@ -56,7 +67,7 @@ void WorkerService::Process() {
     }
 
     // Connect to Aggreagator Service
-    if (!m_AggregatorClient.Connect("localhost", AGGREGATOR_PORT)) {
+    if (!m_AggregatorClient.Connect(m_AggregatorAddr, AGGREGATOR_PORT)) {
         // Connect to Aggregator Service failed. Exit proceess
         throw std::runtime_error("Connect to Aggregator Service failed.");
     }

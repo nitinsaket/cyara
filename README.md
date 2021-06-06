@@ -23,7 +23,7 @@ Note: The folder 'Common' holds the code that's common between the projects.
 The projects were developed in C++ on Windows 10 Home Edition using Visual Studio 2017.
 
 
-# To Test The System:
+# Running The System:
 
 Note: Build the projects DataProvider, Aggregator and WorkerService in Visual Studio. The components can be executed from Visual Studio environment itself or from command line - command line being easier option to test.
 
@@ -44,7 +44,7 @@ Note: Simply executing 'WorkerService.exe' will assume both servers to be on loc
 Note: Default behaviour is same as 'WorkerService.exe' if invalid params are provided at the command line.
 
 
-# To Run Unit Tests
+# Running Unit Tests
 
 Simply build and execute the project UnitTest for all test cases to execute.
 

@@ -1,0 +1,9 @@
+﻿  Aggregator.cpp
+  Client.cpp
+  Server.cpp
+  DataProvider.cpp
+  WorkerService.cpp
+  catch_amalgamated.cpp
+  UnitTest.cpp
+  Generating Code...
+  UnitTest.vcxproj -> D:\Office - Job - Programming Projects\CPP\TESTENV\CYARA\UnitTest\Debug\UnitTest.exe

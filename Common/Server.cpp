@@ -36,6 +36,19 @@ bool Server::Init(const char* l_pPort       /* Port on which to bind */ ) {
         return FAILURE;
     }
 
+    // Set the exclusive address option
+    int iOptval = 1;
+    iResult = setsockopt(m_ListenerSocket, SOL_SOCKET, SO_EXCLUSIVEADDRUSE,
+                         (char *)&iOptval, sizeof(iOptval));
+    if (iResult == SOCKET_ERROR) {
+        LOG("setsockopt for SO_EXCLUSIVEADDRUSE failed with error: " << WSAGetLastError());
+
+        // Cleanup on setsockopt failure
+        freeaddrinfo(result);
+        Close();
+        return FAILURE;
+    }
+
     // Bind listener socket to local address
     iResult = bind(m_ListenerSocket, result->ai_addr, (int)result->ai_addrlen);
     if (iResult == SOCKET_ERROR) {
@@ -101,7 +114,7 @@ bool Server::Send(SOCKET l_cSocket,         /* Client socket */
                   const char* l_sData,      /* Raw data to send */
                   int l_nLen                /* Length of data */) {
     // Check if pointer to data is NULL or data length is zero
-    if (NULL == l_sData || 0 == l_nLen) {
+    if (NULL == l_sData || l_nLen <= 0) {
         // Nothing to send
         return true;
     }

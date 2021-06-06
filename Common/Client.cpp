@@ -67,7 +67,7 @@ bool Client::Connect(const char* l_sIPAddress,        /* IP Address of the serve
 bool Client::Send(const char* l_sData,      /* Data to send over network */
                   int l_nLen                /* Length of data */ ) {
     // Check if pointer to data is NULL or data length is zero
-    if (NULL == l_sData || 0 == l_nLen) {
+    if (NULL == l_sData || l_nLen <= 0) {
         // Nothing to send
         return true;
     }

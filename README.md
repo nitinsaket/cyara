@@ -23,7 +23,7 @@ Note: The folder 'Common' holds the code that's common between the projects.
 The projects were developed in C++ on Windows 10 Home Edition using Visual Studio 2017.
 
 
-# Running The System:
+# Running The System
 
 Note: Build the projects DataProvider, Aggregator and WorkerService in Visual Studio. The components can be executed from Visual Studio environment itself or from command line - command line being easier option to test.
 

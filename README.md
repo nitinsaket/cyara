@@ -43,6 +43,8 @@ Note: Simply executing 'WorkerService.exe' will assume both servers to be on loc
 
 Note: Default behaviour is same as 'WorkerService.exe' if invalid params are provided at the command line.
 
+IMP NOTE: The trace logs have been left enabled to verify that the GUID created at 'Data Provider' is the same as the one received at the 'Worker Service' and has the correct count at 'Aggregator Service'.
+
 
 # Running Unit Tests
 

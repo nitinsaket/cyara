@@ -50,4 +50,6 @@ IMP NOTE: The trace logs have been left enabled to verify that the GUID created 
 
 Simply build and execute the project UnitTest for all test cases to execute.
 
+**IMP NOTE:** Some test cases of UnitTest are verifying error scenarios. Which is why you'll notice error logs getting printed while the Unit Test runs. It does not mean the tests are failing.
+
 Unit Tests were written using Catch2 Unit Testing Framework.
